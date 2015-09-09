@@ -932,6 +932,8 @@ json_t *json_null(void)
 
 void json_delete(json_t *json)
 {
+    pthread_mutex_destroy(&json->refmutex);
+
     if(json_is_object(json))
         json_delete_object(json_to_object(json));
 
@@ -947,7 +949,6 @@ void json_delete(json_t *json)
     else if(json_is_real(json))
         json_delete_real(json_to_real(json));
 
-    pthread_mutex_destroy(&json->refmutex);
     /* json_delete is not called for true, false or null */
 }
 
