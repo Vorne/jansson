@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <unistd.h>
 
 #include "jansson.h"
 #include "jansson_private.h"
@@ -448,6 +449,7 @@ int json_dump_file(const json_t *json, const char *path, size_t flags)
 
     result = json_dumpf(json, output, flags);
 
+    fdatasync(fileno(output));
     fclose(output);
     return result;
 }
