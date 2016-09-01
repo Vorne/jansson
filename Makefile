@@ -1,4 +1,4 @@
-
+BUILD_DIR ?= ../xl
 include $(BUILD_DIR)/makefile.d/base.mk
 
 CFLAGS += -Isrc -DHAVE_STDINT_H=1
