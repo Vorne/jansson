@@ -31,9 +31,11 @@ $(OUTPUT_DIR):
 	$(VERBOSE)mkdir -p $(OUTPUT_DIR)
 
 $(OUTPUT_DIR)/%.o: src/%.c $(HEADERS) | $(OUTPUT_DIR)
+	@echo Jansson $(CC) $(CFLAGS) $(PROFILE_FLAGS) -c $< -o $@
 	$(CC) $(CFLAGS) $(PROFILE_FLAGS) -c $< -o $@
 
 $(JANSSON_A): $(HEADERS) $(OBJS) | $(OUTPUT_DIR)
+	@echo jansson AR is $(AR)
 	$(AR) src $(JANSSON_A) $(OBJS)
 
 clean:
