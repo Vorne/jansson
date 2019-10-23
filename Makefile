@@ -43,4 +43,7 @@ $(JANSSON_A): $(HEADERS) $(OBJS) | $(LIBRARY_OUTPUT_DIR)
 clean:
 	rm -rf $(LIBRARY_OUTPUT_DIR) src/jansson_config.h
 
+cleanall: clean
+	rm -rf build
+
 all: $(JANSSON_A)
